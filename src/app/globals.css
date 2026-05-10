@@ -1,5 +1,7 @@
 @import "../../node_modules/tailwindcss/index.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @keyframes fade-rise {
   from {
     opacity: 0;

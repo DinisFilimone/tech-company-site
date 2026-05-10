@@ -1,45 +1,44 @@
+"use client";
+
+import { useSiteLanguage } from "@/contexts/LanguageContext";
+
 const tech = ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node", "REST & APIs"];
 
 export default function About() {
+  const { t } = useSiteLanguage();
+
   return (
-    <section id="sobre" className="scroll-mt-24 border-t border-white/[0.06] py-24 sm:py-28">
+    <section
+      id="sobre"
+      className="scroll-mt-24 border-t border-zinc-200/85 bg-linear-to-br from-emerald-50/25 via-[#fafaf9] to-teal-50/20 py-24 dark:border-white/[0.06] dark:from-transparent dark:via-transparent dark:to-transparent sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-emerald-400">Sobre</h2>
-            <p className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Engenharia informática aplicada ao negócio
-            </p>
-            <div className="mt-8 space-y-4 text-lg leading-relaxed text-zinc-400">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">{t.about.kicker}</h2>
+            <p className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">{t.about.title}</p>
+            <div className="mt-8 space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p>{t.about.p1}</p>
               <p>
-                A TechNova trata tecnologia como meio para resultados claros:
-                marca séria na internet, sistemas estáveis e experiências que as
-                pessoas querem usar.
-              </p>
-              <p>
-                <strong className="font-medium text-zinc-200">Visão:</strong> ser
-                referência em software e interfaces que parecem desenhadas nos
-                melhores estúdios — com código que aguenta crescimento.
+                <strong className="font-semibold text-zinc-900 dark:text-zinc-200">{t.about.visionLead}</strong>{" "}
+                {t.about.visionRest}
               </p>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.07] bg-linear-to-br from-white/[0.04] to-transparent p-8 sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
-              Tecnologias típicas
-            </p>
+          <div className="rounded-2xl border border-zinc-200/90 bg-white/98 p-8 shadow-[0_22px_50px_-30px_rgba(15,118,110,0.35)] ring-1 ring-teal-900/[0.04] backdrop-blur-sm sm:p-10 dark:border-white/[0.07] dark:bg-linear-to-br dark:from-white/[0.04] dark:to-transparent dark:shadow-none dark:ring-white/[0.04] dark:backdrop-blur-none">
+            <p className="text-sm font-semibold uppercase tracking-widest text-emerald-800/85 dark:text-zinc-500">{t.about.techLead}</p>
             <ul className="mt-6 flex flex-wrap gap-3">
-              {tech.map((t) => (
-                <li key={t}>
-                  <span className="inline-flex rounded-full border border-white/[0.1] bg-zinc-900/80 px-4 py-2 text-sm font-medium text-zinc-300">
-                    {t}
+              {tech.map((name) => (
+                <li key={name}>
+                  <span className="inline-flex rounded-full border border-teal-200/85 bg-teal-50/90 px-4 py-2 text-sm font-medium text-teal-950 shadow-[0_1px_2px_rgba(15,23,42,0.04)] dark:border-white/[0.1] dark:bg-zinc-900/80 dark:text-zinc-300 dark:shadow-none">
+                    {name}
                   </span>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 border-t border-white/[0.06] pt-8 text-sm leading-relaxed text-zinc-500">
-              O stack pode adaptar-se ao projeto — o que não muda é o nível de
-              acabamento: responsivo, acessível e pensado para manutenção.
+            <p className="mt-8 border-t border-emerald-100/80 pt-8 text-sm leading-relaxed text-zinc-600 dark:border-white/[0.06] dark:text-zinc-500">
+              {t.about.techNote}
             </p>
           </div>
         </div>
