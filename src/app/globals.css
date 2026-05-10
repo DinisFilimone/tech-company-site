@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-family-brand: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
 @keyframes fade-rise {
   from {
     opacity: 0;

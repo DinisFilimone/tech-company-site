@@ -1,6 +1,10 @@
 export type Locale = "pt" | "en";
 
 export type SiteMessages = {
+  brand: {
+    legalName: string;
+    slogan: string;
+  };
   nav: {
     cta: string;
     openMenu: string;
@@ -60,6 +64,9 @@ export type SiteMessages = {
     submit: string;
     submitted: string;
     thanks: string;
+    formTitle: string;
+    formHint: string;
+    whatsappLabel: string;
   };
   footer: {
     links: Record<"servicos" | "sobre" | "contacto", string>;
@@ -69,6 +76,10 @@ export type SiteMessages = {
 
 export const siteMessages: Record<Locale, SiteMessages> = {
   pt: {
+    brand: {
+      legalName: "Creative Tech",
+      slogan: "Construído com qualidade, feito para ti.",
+    },
     nav: {
       cta: "Fale connosco",
       openMenu: "Abrir menu",
@@ -154,7 +165,7 @@ export const siteMessages: Record<Locale, SiteMessages> = {
     about: {
       kicker: "Sobre",
       title: "Engenharia informática aplicada ao negócio",
-      p1: "A TechNova trata tecnologia como meio para resultados claros: marca séria na internet, sistemas estáveis e experiências que as pessoas querem usar.",
+      p1: "Na Creative Tech, tratamos tecnologia como meio para resultados claros: marca séria na internet, sistemas estáveis e experiências que as pessoas querem usar.",
       visionLead: "Visão:",
       visionRest:
         "ser referência em software e interfaces que parecem desenhadas nos melhores estúdios — com código que aguenta crescimento.",
@@ -192,7 +203,7 @@ export const siteMessages: Record<Locale, SiteMessages> = {
       kicker: "Contacto",
       title: "Vamos dar o próximo passo",
       intro:
-        "Este formulário está preparado no front-end para validares UX e estado. Mais tarde liga a e-mail ou API quando quiseres receber mensagens mesmo.",
+        "Orçamento, parceria ou dúvidas sobre o teu produto digital — responde por aqui, por telefone ou e-mail. Tratamos os dados com cuidado.",
       directLead: "Contacto direto",
       directName: "Dinis Filimone Júnior",
       directPhone: "+258 84 680 4381",
@@ -211,6 +222,10 @@ export const siteMessages: Record<Locale, SiteMessages> = {
       submitted: "Mensagem registada",
       thanks:
         "Obrigado — modelo pronto para ligar ao teu backend ou serviço de e-mail.",
+      formTitle: "Enviar mensagem",
+      formHint:
+        "Descreve o projeto ou dúvida — respondemos por e-mail o mais breve possível.",
+      whatsappLabel: "WhatsApp",
     },
     footer: {
       links: {
@@ -222,6 +237,10 @@ export const siteMessages: Record<Locale, SiteMessages> = {
     },
   },
   en: {
+    brand: {
+      legalName: "Creative Tech",
+      slogan: "Built with quality, made for you.",
+    },
     nav: {
       cta: "Talk to us",
       openMenu: "Open menu",
@@ -307,7 +326,7 @@ export const siteMessages: Record<Locale, SiteMessages> = {
     about: {
       kicker: "About",
       title: "Computer engineering applied to business",
-      p1: "TechNova treats technology as a lever for clear outcomes: a serious brand online, stable systems and experiences people want to use.",
+      p1: "At Creative Tech, we treat technology as a lever for clear outcomes: a serious brand online, stable systems and experiences people want to use.",
       visionLead: "Vision:",
       visionRest:
         "be the reference for software and interfaces that feel studio-grade — backed by code that scales.",
@@ -345,7 +364,7 @@ export const siteMessages: Record<Locale, SiteMessages> = {
       kicker: "Contact",
       title: "Let’s move forward",
       intro:
-        "This form validates UX locally for now — wire it to email or an API whenever you’re ready.",
+        "Quotes, partnerships, or questions about your product — use the form, phone, or email. We handle your details responsibly.",
       directLead: "Direct contact",
       directName: "Dinis Filimone Júnior",
       directPhone: "+258 84 680 4381",
@@ -364,6 +383,9 @@ export const siteMessages: Record<Locale, SiteMessages> = {
       submitted: "Message saved",
       thanks:
         "Thanks — ready to connect to your backend or transactional email.",
+      formTitle: "Send a message",
+      formHint: "Describe your project or question — we’ll reply by email as soon as we can.",
+      whatsappLabel: "WhatsApp",
     },
     footer: {
       links: {

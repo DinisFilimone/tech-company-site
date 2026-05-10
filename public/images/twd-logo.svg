@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 114" fill="none">
+  <defs>
+    <linearGradient id="twdo" x1="5%" y1="4%" x2="95%" y2="96%">
+      <stop offset="0%" stop-color="#93c5fd"/>
+      <stop offset="45%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <!-- Volume preto -->
+  <g transform="translate(5,5)" fill="#0a0a0a" aria-hidden="true">
+    <path fill-rule="evenodd" d="M8 26L24 9H72V26H44V93H26V26H8z"/>
+    <path fill-rule="evenodd" d="M43 91H64L84 11L111 91L141 11L165 91H180L147 9L125 9L109 69L90 9L68 9L43 91z"/>
+    <path d="M170 9H188V93H170z"/>
+    <path fill-rule="evenodd" d="M188 9H244L270 51L244 93H188V9zM204 25H230L248 51L230 76H204V25z"/>
+  </g>
+  <!-- Azul médio -->
+  <g transform="translate(2.5,2)" fill="#1d4ed8" aria-hidden="true">
+    <path fill-rule="evenodd" d="M8 26L24 9H72V26H44V93H26V26H8z"/>
+    <path fill-rule="evenodd" d="M43 91H64L84 11L111 91L141 11L165 91H180L147 9L125 9L109 69L90 9L68 9L43 91z"/>
+    <path d="M170 9H188V93H170z"/>
+    <path fill-rule="evenodd" d="M188 9H244L270 51L244 93H188V9zM204 25H230L248 51L230 76H204V25z"/>
+    <path fill="#1e40af" d="M218 13L250 52L240 61L213 21zM248 70L270 42L276 50L256 85z"/>
+    <path fill="#1e40af" d="M83 12L94 20L79 30L64 16z"/>
+  </g>
+  <!-- Azul vibrante -->
+  <g fill="url(#twdo)">
+    <path fill-rule="evenodd" d="M5 26L21 9H69V26H41V93H23V26H5z"/>
+    <path fill-rule="evenodd" d="M40 91H61L81 11L108 91L138 11L162 91H177L144 9L122 9L106 69L87 9L65 9L40 91z"/>
+    <path d="M168 9H186V93H168z"/>
+    <path fill-rule="evenodd" d="M186 9H242L268 51L242 93H186V9zM202 25H228L246 51L228 76H202V25z"/>
+  </g>
+  <path fill="#172554" fill-opacity=".95" d="M224 12L256 51L246 60L219 20zM250 70L272 42L278 50L258 85zM80 11L91 20L76 29L61 15z"/>
+</svg>
