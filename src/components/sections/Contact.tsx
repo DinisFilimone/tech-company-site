@@ -63,7 +63,7 @@ export default function Contact() {
   }
 
   const field =
-    "w-full rounded-xl border border-zinc-200/95 bg-blue-50/[0.35] px-4 py-3.5 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-blue-500/70 focus:bg-white focus:ring-4 focus:ring-blue-500/12 dark:border-white/[0.12] dark:bg-zinc-950/85 dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:focus:border-blue-500/55 dark:focus:ring-blue-500/18";
+    "w-full rounded-xl border border-zinc-200/95 bg-blue-50/[0.35] px-4 py-3.5 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-blue-500/70 focus:bg-white focus:ring-4 focus:ring-blue-500/12 dark:border-white/20 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-400 focus-visible:outline-none dark:focus:border-blue-400/65 dark:focus:bg-zinc-900 dark:focus:text-zinc-50 dark:focus:ring-blue-400/18";
 
   return (
     <section

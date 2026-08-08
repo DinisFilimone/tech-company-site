@@ -19,12 +19,31 @@ export type SiteMessages = {
   };
   hero: {
     badge: string;
+    /** Frase por slide do hero (Ideia → Design → Dev → Resultado) */
+    slides: { caption: string }[];
     titleBefore: string;
     titleAccent: string;
     subtitle: string;
     primaryCta: string;
     secondaryCta: string;
     stats: { k: string; v: string }[];
+    requestModal: {
+      title: string;
+      subtitle: string;
+      close: string;
+      submit: string;
+      submittedTitle: string;
+      submittedBody: string;
+      linkToContact: string;
+      name: string;
+      email: string;
+      phone: string;
+      company: string;
+      service: string;
+      servicePlaceholder: string;
+      message: string;
+      serviceOptions: { value: string; label: string }[];
+    };
   };
   services: {
     kicker: string;
@@ -45,7 +64,18 @@ export type SiteMessages = {
     kicker: string;
     title: string;
     subtitle: string;
-    cards: { key: string; title: string; tag: string; desc: string }[];
+    cards: { key: string; slug?: string; title: string; tag: string; desc: string }[];
+    detailIntroBackToProjects: string;
+    detailCtaContact: string;
+    detailNotFound: string;
+    detailPages: Record<
+      string,
+      {
+        eyebrow: string;
+        paragraphs: string[];
+        bullets?: string[];
+      }
+    >;
   };
   contact: {
     kicker: string;
@@ -92,13 +122,13 @@ export const siteMessages: Record<Locale, SiteMessages> = {
           label: "Início",
           hoverTitle: "Visão geral",
           hoverDesc:
-            "Mensagem principal, proposta de valor e primeiras acções para visitantes decidirem ficar.",
+            "",
         },
         servicos: {
           label: "Serviços",
           hoverTitle: "O que entregamos",
           hoverDesc:
-            "Web, apps, UI/UX e automação — o mesmo nível de acabamento em cada linha de oferta.",
+            "Websites, sistemas e aplicações, design gráfico e infraestrutura — tudo falado sem complicar.",
         },
         sobre: {
           label: "Sobre",
@@ -121,57 +151,86 @@ export const siteMessages: Record<Locale, SiteMessages> = {
       },
     },
     hero: {
-      badge: "Soluções digitais e engenharia de software",
+      badge: "Desenvolvimento digital, design de marca e infraestrutura",
+      slides: [
+        { caption: "Criamos soluções digitais sob medida" },
+        { caption: "Design profissional e marca com identidade forte" },
+        { caption: "Ferramentas digitais fiáveis ao serviço do negócio" },
+        { caption: "Do briefing à entrega, com comunicação simples" },
+      ],
       titleBefore: "Produtos tecnológicos com aparência e performance de",
       titleAccent: "nível mundial.",
       subtitle:
-        "Websites, apps e automação pensados para causar uma primeira impressão forte — mesmo quem não percebe de código reconhece qualidade quando vê.",
-      primaryCta: "Começar um projeto",
+        "Desenvolvemos produtos digitais — sites, apps e software à medida (incluindo sistemas internos) — e damos apoio em design gráfico e redes. Explicamos com clareza para perceberes bem o alcance antes de avançares.",
+      primaryCta: "Solicitar proposta",
       secondaryCta: "Ver serviços",
+      requestModal: {
+        title: "Solicitar proposta",
+        subtitle: "Descreve o que precisas — respondemos por e-mail o mais breve possível.",
+        close: "Fechar",
+        submit: "Enviar pedido",
+        submittedTitle: "Pedido registado",
+        submittedBody:
+          "Obrigado. Este formulário está pronto para ser ligado ao teu e-mail ou CRM — tratamos cada pedido como confidencial.",
+        linkToContact: "Ou contactar na secção de contacto →",
+        name: "Nome",
+        email: "E-mail",
+        phone: "Telefone",
+        company: "Empresa (opcional)",
+        service: "Serviço pretendido",
+        servicePlaceholder: "Escolher serviço…",
+        message: "Mensagem / contexto",
+        serviceOptions: [
+          { value: "web-systems", label: "Desenvolvimento web & sistemas" },
+          { value: "applications", label: "Desenvolvimento de aplicações" },
+          { value: "design-branding", label: "Design gráfico & branding" },
+          { value: "infrastructure", label: "Infraestrutura & redes" },
+        ],
+      },
       stats: [
-        { k: "Foco", v: "UX e performance" },
-        { k: "Stack", v: "Next.js, React & modern web" },
-        { k: "Entrega", v: "Arquitetura escalável" },
+        { k: "Produtos digitais", v: "Sites, apps e software à medida" },
+        { k: "Design", v: "Marca e peças gráficas" },
+        { k: "Infraestrutura", v: "Redes e suporte técnico" },
       ],
     },
     services: {
       kicker: "Serviços",
       title: "O que construímos contigo",
       subtitle:
-        "Da presença online a produtos que precisam de escala — com o mesmo padrão de detalhe.",
+        "Quatro frentes que se encaixam: web e sistemas relacionados, aplicações, identidade gráfica e infraestrutura de rede — cada uma com uma descrição objetiva.",
       items: [
         {
           key: "web",
-          title: "Websites",
-          desc: "Sites rápidos, responsivos e preparados para SEO e conversão.",
+          title: "Desenvolvimento Web & Sistemas",
+          desc: "Websites, plataformas e sistemas modernos desenvolvidos para empresas e negócios.",
         },
         {
           key: "apps",
-          title: "Apps",
-          desc: "Interfaces fluidas para web e mobile-ready, com código sustentável.",
+          title: "Desenvolvimento de Aplicações",
+          desc: "Aplicações web e mobile rápidas, modernas e intuitivas.",
         },
         {
-          key: "ui",
-          title: "UI / UX",
-          desc: "Hierarquia visual, ritmo e detalhes que transmitem confiança.",
+          key: "design",
+          title: "Design Gráfico & Branding",
+          desc: "Identidade visual e materiais gráficos criados para fortalecer marcas.",
         },
         {
-          key: "auto",
-          title: "Automação",
-          desc: "Menos trabalho repetitivo, mais consistência nos teus fluxos.",
+          key: "infra",
+          title: "Infraestrutura & Redes",
+          desc: "Soluções de conectividade, redes e suporte tecnológico para empresas.",
         },
       ],
     },
     about: {
       kicker: "Sobre",
       title: "Engenharia informática aplicada ao negócio",
-      p1: "Na Creative Tech, tratamos tecnologia como meio para resultados claros: marca séria na internet, sistemas estáveis e experiências que as pessoas querem usar.",
+      p1: "Na Creative Tech acompanhamos o teu negócio no digital de ponta a ponta: produtos feitos à medida (sites, apps e software — por vezes chamados “sistemas” quando servem equipas internas), design gráfico para a marca e infraestrutura de redes. O que nos importa é o resultado visível e útil no dia a dia.",
       visionLead: "Visão:",
       visionRest:
-        "ser referência em software e interfaces que parecem desenhadas nos melhores estúdios — com código que aguenta crescimento.",
+        "ser a equipa que as empresas procuram quando querem tecnologia bem feita, explicações simples e entregas em que podem confiar.",
       techLead: "Tecnologias típicas",
       techNote:
-        "O stack pode adaptar-se ao projeto — o que não muda é o nível de acabamento: responsivo, acessível e pensado para manutenção.",
+        "Escolhemos ferramentas adequadas a cada projeto — o que não muda é o compromisso com qualidade, clareza e soluções fáceis de manter.",
     },
     projects: {
       kicker: "Projetos",
@@ -183,21 +242,54 @@ export const siteMessages: Record<Locale, SiteMessages> = {
           key: "saas",
           title: "Plataforma SaaS",
           tag: "Em breve",
-          desc: "Casos demonstrando arquitetura, UI e métricas de negócio.",
+          desc: "Casos com produtos digitais, sistemas e impacto no dia a dia do negócio.",
         },
         {
           key: "brand",
+          slug: "app-marca-digital",
           title: "App & marca digital",
           tag: "Galeria",
           desc: "Site institucional, identidade consistente no produto.",
         },
         {
-          key: "auto",
-          title: "Automações internas",
-          tag: "Backoffice",
-          desc: "Integrações que reduzem erros humanos nos fluxos diários.",
+          key: "infra",
+          slug: "infraestrutura-redes",
+          title: "Infraestrutura & redes",
+          tag: "Empresas",
+          desc: "Conectividade, redes e suporte tecnológico para operações do dia a dia.",
         },
       ],
+      detailIntroBackToProjects: "Voltar aos projetos",
+      detailCtaContact: "Falar sobre este projeto",
+      detailNotFound: "Esta página de projeto não existe.",
+      detailPages: {
+        "app-marca-digital": {
+          eyebrow: "App & marca digital",
+          paragraphs: [
+            "Unimos presença online e produto: sites institucionais, landing pages e superfícies na aplicação que falam a mesma língua visual e de tom.",
+            "Trabalhamos com identidade aplicada (tipografia, cores, espaçamentos) para que cada ecrã reforce confiança e pareça pensado nos detalhes — como marcas tecnológicas de referência costumam fazer.",
+            "Queres evoluir o site, alinhar o aspeto do produto à marca ou preparar materiais consistentes para lançamentos? Esta linha cobre esse tipo de projeto.",
+          ],
+          bullets: [
+            "Sites e áreas institucionais responsivas e rápidas",
+            "Aspeto visual alinhado com guidelines de marca ou guia inicial de identidade",
+            "Handoff claro entre design e código (estrutura, componentes)",
+          ],
+        },
+        "infraestrutura-redes": {
+          eyebrow: "Infraestrutura & redes",
+          paragraphs: [
+            "Muitas empresas precisam mais do que um site ou uma app: precisam de rede estável, boa ligação à internet, equipamentos bem configurados e alguém que resolva quando algo falha.",
+            "Apoiamos em projectos de conectividade, estrutura de rede interna, Wi‑Fi para escritórios ou lojas e boas práticas de segurança básica — sempre alinhado ao tamanho e à realidade do negócio.",
+            "Se o teu desafio é garantir a operação do dia a dia (comunicações, acesso remoto, suporte pontual a equipas), esta linha de trabalho cobre esse tipo de necessidade.",
+          ],
+          bullets: [
+            "Planeamento e melhoria de redes internas e Wi‑Fi",
+            "Conectividade e continuidade para equipas e instalações",
+            "Suporte tecnológico orientado a negócios, sem jargão desnecessário",
+          ],
+        },
+      },
     },
     contact: {
       kicker: "Contacto",
@@ -259,7 +351,7 @@ export const siteMessages: Record<Locale, SiteMessages> = {
           label: "Services",
           hoverTitle: "What we ship",
           hoverDesc:
-            "Web, apps, UI/UX and automation — consistent execution across every offering.",
+            "Websites, systems, apps, graphic design and infrastructure — explained in plain language.",
         },
         sobre: {
           label: "About",
@@ -282,57 +374,86 @@ export const siteMessages: Record<Locale, SiteMessages> = {
       },
     },
     hero: {
-      badge: "Digital products & software engineering",
+      badge: "Digital development, brand design & infrastructure",
+      slides: [
+        { caption: "We build tailored digital solutions" },
+        { caption: "Professional design and a strong brand look" },
+        { caption: "Dependable digital tools for real-world operations" },
+        { caption: "From brief to delivery — clear, simple communication" },
+      ],
       titleBefore: "Technology built to look and perform at a",
       titleAccent: "world-class level.",
       subtitle:
-        "Web, apps and automation designed for a striking first impression — even non‑technical viewers spot quality instantly.",
-      primaryCta: "Start a project",
+        "We ship digital products — websites, apps and custom software (including internal systems) — plus brand design and networking support. We explain scope clearly before you commit.",
+      primaryCta: "Request proposal",
       secondaryCta: "View services",
+      requestModal: {
+        title: "Request proposal",
+        subtitle: "Tell us what you need — we'll reply by email as soon as we can.",
+        close: "Close",
+        submit: "Send request",
+        submittedTitle: "Request received",
+        submittedBody:
+          "Thank you — this form is ready to wire to email or CRM. We treat each request confidentially.",
+        linkToContact: "Or go to contact section →",
+        name: "Name",
+        email: "Email",
+        phone: "Phone",
+        company: "Company (optional)",
+        service: "Service interested in",
+        servicePlaceholder: "Select a service…",
+        message: "Message / context",
+        serviceOptions: [
+          { value: "web-systems", label: "Web & systems development" },
+          { value: "applications", label: "Application development" },
+          { value: "design-branding", label: "Graphic design & branding" },
+          { value: "infrastructure", label: "Infrastructure & networks" },
+        ],
+      },
       stats: [
-        { k: "Focus", v: "UX & performance" },
-        { k: "Stack", v: "Next.js, React & modern web" },
-        { k: "Delivery", v: "Scalable architecture" },
+        { k: "Digital products", v: "Sites, apps & custom software" },
+        { k: "Design", v: "Brand & graphic work" },
+        { k: "Infrastructure", v: "Networks & IT support" },
       ],
     },
     services: {
       kicker: "Services",
       title: "What we build with you",
       subtitle:
-        "From brand presence to products that must scale — the same bar for craft everywhere.",
+        "Four complementary tracks: web and related platforms, apps, graphic identity and network infrastructure — each summed up in plain language.",
       items: [
         {
           key: "web",
-          title: "Websites",
-          desc: "Fast, responsive sites tuned for SEO and conversion.",
+          title: "Web & systems development",
+          desc: "Websites, platforms and modern systems built for companies and growing businesses.",
         },
         {
           key: "apps",
-          title: "Apps",
-          desc: "Fluid interfaces for web and mobile-ready experiences, built to last.",
+          title: "Application development",
+          desc: "Fast, modern and intuitive web and mobile applications.",
         },
         {
-          key: "ui",
-          title: "UI / UX",
-          desc: "Visual hierarchy, rhythm and micro-detail that signal trust.",
+          key: "design",
+          title: "Graphic design & branding",
+          desc: "Visual identity and graphic materials that strengthen brands.",
         },
         {
-          key: "auto",
-          title: "Automation",
-          desc: "Less repetitive work, more consistency across your flows.",
+          key: "infra",
+          title: "Infrastructure & networks",
+          desc: "Connectivity, networking and technology support for organizations.",
         },
       ],
     },
     about: {
       kicker: "About",
       title: "Computer engineering applied to business",
-      p1: "At Creative Tech, we treat technology as a lever for clear outcomes: a serious brand online, stable systems and experiences people want to use.",
+      p1: "At Creative Tech we guide businesses end to end digitally: bespoke products (websites, apps and software — people often say “systems” when those tools support internal teams), brand graphic design and network infrastructure. We care about outcomes you can actually see teams use day to day.",
       visionLead: "Vision:",
       visionRest:
-        "be the reference for software and interfaces that feel studio-grade — backed by code that scales.",
+        "be the team businesses turn to for well-built technology, jargon-free explanations and deliveries they can rely on.",
       techLead: "Typical tech",
       techNote:
-        "The stack flexes per project — the finish line doesn’t: responsive, accessible and maintainable by design.",
+        "We pick tools that fit each project — what stays constant is craft, clarity and solutions that are practical to operate.",
     },
     projects: {
       kicker: "Projects",
@@ -344,21 +465,54 @@ export const siteMessages: Record<Locale, SiteMessages> = {
           key: "saas",
           title: "SaaS platform",
           tag: "Soon",
-          desc: "Case studies spanning architecture, UI and business metrics.",
+          desc: "Case studies with digital products, systems and day-to-day business impact.",
         },
         {
           key: "brand",
+          slug: "app-marca-digital",
           title: "App & digital brand",
           tag: "Gallery",
           desc: "Corporate sites with identity carried through the product.",
         },
         {
-          key: "auto",
-          title: "Internal automation",
-          tag: "Back office",
-          desc: "Integrations that trim human error in everyday workflows.",
+          key: "infra",
+          slug: "infraestrutura-redes",
+          title: "Infrastructure & networks",
+          tag: "Business",
+          desc: "Connectivity, networks and technology support for daily operations.",
         },
       ],
+      detailIntroBackToProjects: "Back to projects",
+      detailCtaContact: "Talk about this project",
+      detailNotFound: "This project page does not exist.",
+      detailPages: {
+        "app-marca-digital": {
+          eyebrow: "App & digital brand",
+          paragraphs: [
+            "We tie together your web presence and product: institutional sites, landing pages, and in-app surfaces that share the same visual language and tone.",
+            "We translate brand cues (typography, color, spacing) into layouts that feel cohesive and deliberate — closer to how best-in-class tech companies present themselves.",
+            "Whether you’re refreshing a marketing site, aligning product UI with brand, or preparing consistent launch surfaces, this track covers that work.",
+          ],
+          bullets: [
+            "Fast, responsive institutional and marketing pages",
+            "Visual design aligned with brand guidelines or an early identity guide",
+            "Clear handoff between design and engineering (structure, components)",
+          ],
+        },
+        "infraestrutura-redes": {
+          eyebrow: "Infrastructure & networks",
+          paragraphs: [
+            "Many companies need more than a website or an app: they need stable networking, solid internet access, properly set up hardware, and someone who shows up when things break.",
+            "We help with connectivity projects, internal network structure, office or retail Wi‑Fi, and sensible baseline security — always matched to the size and reality of the business.",
+            "If your challenge is keeping day-to-day operations running (communications, remote access, occasional team support), this track covers that kind of work.",
+          ],
+          bullets: [
+            "Planning and improving internal networks and Wi‑Fi",
+            "Connectivity and continuity for teams and facilities",
+            "Business-oriented technology support without unnecessary jargon",
+          ],
+        },
+      },
     },
     contact: {
       kicker: "Contact",

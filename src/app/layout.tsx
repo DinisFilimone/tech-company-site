@@ -26,7 +26,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Creative Tech — Software, web e criatividade digital",
   description:
-    "Creative Tech: websites, apps e soluções digitais com qualidade. Built with quality, made for you.",
+    "Creative Tech: software, sistemas, websites, aplicações, design gráfico e infraestrutura para empresas — Built with quality, made for you.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,27 @@
 "use client";
 
+import Link from "next/link";
 import { useSiteLanguage } from "@/contexts/LanguageContext";
+
+const cardOuterClass =
+  "group relative flex h-full origin-center flex-col overflow-hidden rounded-2xl border border-dashed border-blue-200/95 bg-linear-to-br from-blue-50/40 via-white to-zinc-50/95 shadow-[0_16px_40px_-32px_rgba(59,130,246,0.45)] ring-1 ring-zinc-900/[0.03] transition-[transform,box-shadow,border-color] duration-300 ease-out will-change-transform motion-safe:hover:z-10 motion-safe:hover:scale-[1.03] motion-safe:hover:border-blue-400/65 motion-safe:hover:shadow-[0_22px_48px_-20px_rgba(59,130,246,0.38)] dark:border-white/[0.12] dark:from-transparent dark:via-transparent dark:to-transparent dark:shadow-none dark:ring-white/[0.04] dark:motion-safe:hover:border-blue-500/30 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/45 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950";
+
+function ProjectCardBody({ title, tag, desc }: { title: string; tag: string; desc: string }) {
+  return (
+    <>
+      <div className="aspect-[16/10] bg-linear-to-br from-blue-200/45 via-sky-100/40 to-white ring-1 ring-inset ring-white/75 dark:from-blue-500/10 dark:via-zinc-900/90 dark:to-zinc-950 dark:ring-white/[0.04]" />
+      <div className="flex flex-1 flex-col gap-3 p-6">
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">{title}</h3>
+          <span className="rounded-full border border-transparent bg-sky-100/90 px-2.5 py-0.5 text-xs font-medium text-sky-900 dark:border-transparent dark:bg-white/[0.06] dark:text-zinc-400">
+            {tag}
+          </span>
+        </div>
+        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">{desc}</p>
+      </div>
+    </>
+  );
+}
 
 export default function Projects() {
   const { t } = useSiteLanguage();
@@ -18,22 +39,18 @@ export default function Projects() {
           </div>
         </div>
 
-        <ul className="mt-16 grid gap-6 lg:grid-cols-3">
+        <ul className="mt-16 grid gap-6 lg:grid-cols-3 lg:gap-8">
           {t.projects.cards.map((p) => (
-            <li
-              key={p.key}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-dashed border-blue-200/95 bg-linear-to-br from-blue-50/40 via-white to-zinc-50/95 shadow-[0_16px_40px_-32px_rgba(59,130,246,0.45)] ring-1 ring-zinc-900/[0.03] transition hover:border-blue-400/65 hover:shadow-[0_18px_40px_-24px_rgba(59,130,246,0.35)] dark:border-white/[0.12] dark:from-transparent dark:via-transparent dark:to-transparent dark:shadow-none dark:ring-white/[0.04] dark:hover:border-blue-500/30"
-            >
-              <div className="aspect-[16/10] bg-linear-to-br from-blue-200/45 via-sky-100/40 to-white ring-1 ring-inset ring-white/75 dark:from-blue-500/10 dark:via-zinc-900/90 dark:to-zinc-950 dark:ring-white/[0.04]" />
-              <div className="flex flex-1 flex-col gap-3 p-6">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">{p.title}</h3>
-                  <span className="rounded-full border border-transparent bg-sky-100/90 px-2.5 py-0.5 text-xs font-medium text-sky-900 dark:border-transparent dark:bg-white/[0.06] dark:text-zinc-400">
-                    {p.tag}
-                  </span>
+            <li key={p.key} className="flex h-full min-h-[320px]">
+              {p.slug ? (
+                <Link href={`/projetos/${p.slug}`} className={cardOuterClass}>
+                  <ProjectCardBody title={p.title} tag={p.tag} desc={p.desc} />
+                </Link>
+              ) : (
+                <div className={cardOuterClass}>
+                  <ProjectCardBody title={p.title} tag={p.tag} desc={p.desc} />
                 </div>
-                <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">{p.desc}</p>
-              </div>
+              )}
             </li>
           ))}
         </ul>

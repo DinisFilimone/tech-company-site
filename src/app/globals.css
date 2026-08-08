@@ -6,6 +6,17 @@
   --font-family-brand: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
+@keyframes hero-slide-line {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fade-rise {
   from {
     opacity: 0;
@@ -39,6 +50,10 @@
 }
 
 @layer utilities {
+  .animate-hero-slide-line {
+    animation: hero-slide-line 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
   .animate-fade-rise {
     animation: fade-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
@@ -54,4 +69,50 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Dark mode: keep form fields visibly “black”, readable text/placeholders, no autofill white flash */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active,
+.dark textarea:-webkit-autofill,
+.dark textarea:-webkit-autofill:hover,
+.dark textarea:-webkit-autofill:focus,
+.dark textarea:-webkit-autofill:active,
+.dark select:-webkit-autofill,
+.dark select:-webkit-autofill:hover,
+.dark select:-webkit-autofill:focus,
+.dark select:-webkit-autofill:active {
+  -webkit-text-fill-color: #fafafa;
+  caret-color: #fafafa;
+  border-color: rgb(255 255 255 / 0.22);
+  box-shadow: 0 0 0 100em #18181b inset;
+  -webkit-box-shadow: 0 0 0 100em #18181b inset;
+  transition: background-color 999999s ease-out 0s;
+}
+
+.dark input:autofill,
+.dark input:autofill:hover,
+.dark input:autofill:focus,
+.dark textarea:autofill,
+.dark textarea:autofill:hover,
+.dark textarea:autofill:focus,
+.dark select:autofill,
+.dark select:autofill:hover,
+.dark select:autofill:focus {
+  -webkit-text-fill-color: #fafafa;
+  caret-color: #fafafa;
+  box-shadow: 0 0 0 100em #18181b inset;
+  -webkit-box-shadow: 0 0 0 100em #18181b inset;
+}
+
+.dark select option {
+  background-color: #18181b;
+  color: #fafafa;
 }
